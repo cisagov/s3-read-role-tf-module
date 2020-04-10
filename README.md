@@ -17,7 +17,7 @@ module "example" {
 
   account_ids = ["123456789012"]
   entity_name = "example-user"
-  s3_buckets  = ["my-bucket", "my-other-bucket"]
+  s3_bucket   = "example-bucket"
 }
 ```
 
