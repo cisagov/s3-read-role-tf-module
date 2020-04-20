@@ -50,6 +50,12 @@ variable "role_name" {
   default     = "%s-ReadOnly-%s"
 }
 
+variable "role_tags" {
+  type        = map(string)
+  description = "Tags to apply to the IAM role that allows read-only access to the specified S3 buckets."
+  default     = {}
+}
+
 variable "s3_objects" {
   type        = list(string)
   description = "A list specifying the objects in the S3 bucket that the created role will be allowed to read (e.g. [\"my-file\", \"projects\\example\\*\"]).  AWS-supported S3 ARN wildcards (* and ?) can be used, but full regular expressions can not.  If not specified, the role will be allowed to read any object in the bucket."
