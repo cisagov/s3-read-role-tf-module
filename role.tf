@@ -13,10 +13,9 @@ data "aws_iam_policy_document" "assume_role" {
       identifiers = ["ec2.amazonaws.com"]
     }
 
-    # Calculate all combinations of account_ids and iam_usernames
     principals {
       type        = "AWS"
-      identifiers = [for t in setproduct(var.account_ids, local.iam_usernames) : format("arn:aws:iam::${t[0]}:${t[1]}")]
+      identifiers = var.account_ids
     }
   }
 }
@@ -24,8 +23,8 @@ data "aws_iam_policy_document" "assume_role" {
 # The IAM role
 resource "aws_iam_role" "s3_read" {
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
-  description        = local.role_description
-  name               = local.role_name
+  description        = var.role_description
+  name               = var.role_name
   tags               = var.role_tags
 }
 

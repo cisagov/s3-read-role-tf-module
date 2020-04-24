@@ -9,18 +9,18 @@ data "aws_iam_policy_document" "s3_read" {
     ]
 
     # Create list of ARNs with all combinations of bucket and objects
-    resources = [for t in setproduct([var.s3_bucket], var.s3_objects) : format("arn:aws:s3:::${t[0]}/${t[1]}")]
+    resources = [for obj in var.s3_objects : "arn:aws:s3:::${var.bucket_name}/${obj}"]
   }
 
-  statement {
-    effect = "Allow"
+  # statement {
+  #   effect = "Allow"
 
-    actions = [
-      "s3:HeadBucket",
-    ]
+  #   actions = [
+  #     "s3:HeadBucket",
+  #   ]
 
-    resources = ["*"]
-  }
+  #   resources = ["*"]
+  # }
 
   statement {
     effect = "Allow"
@@ -30,14 +30,14 @@ data "aws_iam_policy_document" "s3_read" {
     ]
 
     resources = [
-      "arn:aws:s3:::${var.s3_bucket}"
+      "arn:aws:s3:::${var.bucket_name}"
     ]
   }
 }
 
 # The IAM policy for our role
 resource "aws_iam_policy" "s3_read" {
-  description = local.role_description
-  name        = local.role_name
+  description = var.role_description
+  name        = var.role_name
   policy      = data.aws_iam_policy_document.s3_read.json
 }
