@@ -92,6 +92,12 @@ This meta-role requires a permission policy similar to the following:
 | policy | The IAM policy that can read the specified objects from the specified S3 bucket. |
 | role | The IAM role that can read the specified objects from the specified S3 bucket. |
 
+## Notes ##
+
+Running `pre-commit` requires running `terraform init` in every directory that
+contains Terraform code. In this repository, these are the main directory and
+every directory under `examples/`.
+
 ## Contributing ##
 
 We welcome contributions!  Please see [here](CONTRIBUTING.md) for
