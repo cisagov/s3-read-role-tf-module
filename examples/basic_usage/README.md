@@ -8,6 +8,28 @@ followed by the `terraform apply` command.
 Note that this example may create resources which cost money. Run
 `terraform destroy` when you no longer need these resources.
 
+## Requirements ##
+
+No requirements.
+
+## Providers ##
+
+No providers.
+
+## Modules ##
+
+| Name | Source | Version |
+|------|--------|---------|
+| s3\_read\_role | ../../ |  |
+
+## Resources ##
+
+No resources.
+
+## Inputs ##
+
+No inputs.
+
 ## Outputs ##
 
 | Name | Description |

@@ -4,6 +4,11 @@ provider "aws" {
     role_arn     = "arn:aws:iam::123456789011:role/ProvisionBucketReadRoles"
     session_name = "terraform-example-create-bucket-role"
   }
+  default_tags {
+    tags = {
+      Testing = true
+    }
+  }
   region = "us-east-1"
 }
 
