@@ -26,6 +26,12 @@ variable "account_ids" {
   default     = []
 }
 
+variable "additional_role_tags" {
+  type        = map(string)
+  description = "Tags to apply to the IAM role that allows read-only access to the specified S3 buckets, in addition to the provider's default tags."
+  default     = {}
+}
+
 variable "aws_region" {
   type        = string
   description = "The AWS region where the non-global resources are to be provisioned (e.g. \"us-east-1\")."
@@ -48,12 +54,6 @@ variable "role_name" {
   type        = string
   description = "The name to assign the IAM role (as well as the corresponding policy) that allows read-only access to the specified S3 buckets.  Note that the first \"%s\" in this value will get replaced with the s3_bucket variable and the second \"%s\" will get replaced with the entity_name variable."
   default     = "%s-ReadOnly-%s"
-}
-
-variable "role_tags" {
-  type        = map(string)
-  description = "Tags to apply to the IAM role that allows read-only access to the specified S3 buckets."
-  default     = {}
 }
 
 variable "s3_objects" {

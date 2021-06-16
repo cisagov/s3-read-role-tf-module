@@ -103,12 +103,12 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | account\_ids | AWS account IDs that are allowed to assume the role. | `list(string)` | `[]` | no |
+| additional\_role\_tags | Tags to apply to the IAM role that allows read-only access to the specified S3 buckets, in addition to the provider's default tags. | `map(string)` | `{}` | no |
 | aws\_region | The AWS region where the non-global resources are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
 | entity\_name | The name of the entity that the role is being created for (e.g. "test-user"). | `string` | n/a | yes |
 | iam\_usernames | The list of IAM usernames allowed to assume the role.  If not provided, defaults to allowing any user in the specified account(s).  Note that including "root" in this list will override any other usernames in the list. | `list(string)` | `["root"]` | no |
 | role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows read-only access to the specified object(s) in the specified S3 buckets.  Note that the first "%s" in this value will get replaced with the s3\_bucket variable and the second "%s" will get replaced with the entity\_name variable. | `string` | `"Allows read-only access to S3 bucket %s required for %s."` | no |
 | role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows read-only access to the specified S3 buckets.  Note that the first "%s" in this value will get replaced with the s3\_bucket variable and the second "%s" will get replaced with the entity\_name variable. | `string` | `"%s-ReadOnly-%s"` | no |
-| role\_tags | Tags to apply to the IAM role that allows read-only access to the specified S3 buckets. | `map(string)` | `{}` | no |
 | s3\_bucket | The name of the S3 bucket that the created role will be allowed to read from (e.g. "my-bucket"). | `string` | n/a | yes |
 | s3\_objects | A list specifying the objects in the S3 bucket that the created role will be allowed to read (e.g. ["my-file", "projects\example\*"]).  AWS-supported S3 ARN wildcards (* and ?) can be used, but full regular expressions can not.  If not specified, the role will be allowed to read any object in the bucket. | `list(string)` | `["*"]` | no |
 
