@@ -26,7 +26,7 @@ resource "aws_iam_role" "s3_read" {
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
   description        = local.role_description
   name               = local.role_name
-  tags               = var.role_tags
+  tags               = var.additional_role_tags
 }
 
 # Attach the policy to the role
