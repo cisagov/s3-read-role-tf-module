@@ -76,27 +76,41 @@ This meta-role requires a permission policy similar to the following:
 | Name | Version |
 |------|---------|
 | terraform | ~> 0.12.0 |
-| aws | ~> 3.0 |
+| aws | ~> 3.38 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.0 |
+| aws | ~> 3.38 |
+
+## Modules ##
+
+No modules.
+
+## Resources ##
+
+| Name | Type |
+|------|------|
+| [aws_iam_policy.s3_read](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role.s3_read](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.s3_read](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_policy_document.assume_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.s3_read](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| account_ids | AWS account IDs that are allowed to assume the role. | `list(string)` | `[]` | no |
-| aws_region | The AWS region where the non-global resources are to be provisioned (e.g. "us-east-1"). | `string` | `us-east-1` | no |
-| entity_name | The name of the entity that the role is being created for (e.g. "test-user"). | `string` | n/a | yes |
-| iam_usernames | The list of IAM usernames allowed to assume the role.  If not provided, defaults to allowing any user in the specified account(s).  Note that including "root" in this list will override any other usernames in the list. | `list(string)` | `["root"]` | no |
-| role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows read-only access to the specified object(s) in the specified S3 buckets.  Note that the first "%s" in this value will get replaced with the s3_bucket variable and the second "%s" will get replaced with the entity_name variable. | `string` | `Allows read-only access to S3 bucket %s required for %s.` | no |
-| role_name | The name to assign the IAM role (as well as the corresponding policy) that allows read-only access to the specified S3 buckets.  Note that the first "%s" in this value will get replaced with the s3_bucket variable and the second "%s" will get replaced with the entity_name variable. | `string` | `%s-ReadOnly-%s` | no |
-| role_tags | Tags to apply to the IAM role that allows read-only access to the specified S3 buckets. | `map(string)` | `{}` | no |
-| s3_bucket | The name of the S3 bucket that the created role will be allowed to read from (e.g. "my-bucket"). | `string` | n/a | yes |
-| s3_objects | A list specifying the objects in the S3 bucket that the created role will be allowed to read (e.g. ["my-file", "projects\example\*"]).  AWS-supported S3 ARN wildcards (* and ?) can be used, but full regular expressions can not.  If not specified, the role will be allowed to read any object in the bucket. | `list(string)` | `["*"]` | no |
+| account\_ids | AWS account IDs that are allowed to assume the role. | `list(string)` | `[]` | no |
+| aws\_region | The AWS region where the non-global resources are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
+| entity\_name | The name of the entity that the role is being created for (e.g. "test-user"). | `string` | n/a | yes |
+| iam\_usernames | The list of IAM usernames allowed to assume the role.  If not provided, defaults to allowing any user in the specified account(s).  Note that including "root" in this list will override any other usernames in the list. | `list(string)` | `["root"]` | no |
+| role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows read-only access to the specified object(s) in the specified S3 buckets.  Note that the first "%s" in this value will get replaced with the s3\_bucket variable and the second "%s" will get replaced with the entity\_name variable. | `string` | `"Allows read-only access to S3 bucket %s required for %s."` | no |
+| role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows read-only access to the specified S3 buckets.  Note that the first "%s" in this value will get replaced with the s3\_bucket variable and the second "%s" will get replaced with the entity\_name variable. | `string` | `"%s-ReadOnly-%s"` | no |
+| role\_tags | Tags to apply to the IAM role that allows read-only access to the specified S3 buckets. | `map(string)` | `{}` | no |
+| s3\_bucket | The name of the S3 bucket that the created role will be allowed to read from (e.g. "my-bucket"). | `string` | n/a | yes |
+| s3\_objects | A list specifying the objects in the S3 bucket that the created role will be allowed to read (e.g. ["my-file", "projects\example\*"]).  AWS-supported S3 ARN wildcards (* and ?) can be used, but full regular expressions can not.  If not specified, the role will be allowed to read any object in the bucket. | `list(string)` | `["*"]` | no |
 
 ## Outputs ##
 
