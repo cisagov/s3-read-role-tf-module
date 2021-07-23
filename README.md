@@ -69,7 +69,7 @@ This meta-role requires a permission policy similar to the following:
 
 ## Examples ##
 
-* [Basic usage](https://github.com/cisagov/s3-read-role-tf-module/tree/develop/examples/basic_usage)
+- [Basic usage](https://github.com/cisagov/s3-read-role-tf-module/tree/develop/examples/basic_usage)
 
 ## Requirements ##
 
