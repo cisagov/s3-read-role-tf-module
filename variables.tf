@@ -46,13 +46,13 @@ variable "iam_usernames" {
 
 variable "role_description" {
   type        = string
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows read-only access to the specified object(s) in the specified S3 buckets.  Note that the first \"%s\" in this value will get replaced with the s3_bucket variable and the second \"%s\" will get replaced with the entity_name variable."
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows read-only access to the specified object(s) in the specified S3 buckets.  Note that the first \"%s\" in this value will get replaced with the s3_bucket variable and the second \"%s\" will get replaced with the entity_name variable.  If there are less than two instances of \"%s\" present in this value, no replacements will be made and the value will be used as is.  Including more than two instances of \"%s\" in this value will result in a Terraform error, so don't do that."
   default     = "Allows read-only access to S3 bucket %s required for %s."
 }
 
 variable "role_name" {
   type        = string
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows read-only access to the specified S3 buckets.  Note that the first \"%s\" in this value will get replaced with the s3_bucket variable and the second \"%s\" will get replaced with the entity_name variable."
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows read-only access to the specified S3 buckets.  Note that the first \"%s\" in this value will get replaced with the s3_bucket variable and the second \"%s\" will get replaced with the entity_name variable.  If there are less than two instances of \"%s\" present in this value, no replacements will be made and the value will be used as is.  Including more than two instances of \"%s\" in this value will result in a Terraform error, so don't do that.  If the role name is longer than the current AWS limit of 64 characters (either as-is or after \"%s\" replacements), the role name will be truncated to the first 64 characters."
   default     = "%s-ReadOnly-%s"
 }
 
