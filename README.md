@@ -77,13 +77,13 @@ This meta-role requires a permission policy similar to the following:
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.0 |
-| aws | ~> 4.9 |
+| aws | ~> 5.0 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 4.9 |
+| aws | ~> 5.0 |
 
 ## Modules ##
 
