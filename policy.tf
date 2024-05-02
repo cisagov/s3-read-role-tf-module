@@ -2,32 +2,32 @@
 # from the specified S3 bucket
 data "aws_iam_policy_document" "s3_read" {
   statement {
-    effect = "Allow"
-
     actions = [
       "s3:GetObject",
     ]
+
+    effect = "Allow"
 
     # Create list of ARNs with all combinations of bucket and objects
     resources = [for t in setproduct([var.s3_bucket], var.s3_objects) : format("arn:aws:s3:::${t[0]}/${t[1]}")]
   }
 
   statement {
-    effect = "Allow"
-
     actions = [
       "s3:HeadBucket",
     ]
+
+    effect = "Allow"
 
     resources = ["*"]
   }
 
   statement {
-    effect = "Allow"
-
     actions = [
       "s3:ListBucket",
     ]
+
+    effect = "Allow"
 
     resources = [
       "arn:aws:s3:::${var.s3_bucket}"

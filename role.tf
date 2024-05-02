@@ -1,12 +1,12 @@
 # IAM assume role policy document for the IAM role
 data "aws_iam_policy_document" "assume_role" {
   statement {
-    effect = "Allow"
-
     actions = [
       "sts:AssumeRole",
       "sts:TagSession"
     ]
+
+    effect = "Allow"
 
     principals {
       type        = "Service"
