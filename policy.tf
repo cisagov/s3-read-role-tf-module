@@ -34,7 +34,7 @@ data "aws_iam_policy_document" "s3_access" {
 }
 
 # The IAM policy for our role
-resource "aws_iam_policy" "s3_read" {
+resource "aws_iam_policy" "s3_access" {
   description = local.role_description
   name        = local.role_name
   policy      = data.aws_iam_policy_document.s3_access.json
