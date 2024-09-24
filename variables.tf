@@ -44,6 +44,12 @@ variable "iam_usernames" {
   default     = ["root"]
 }
 
+variable "read_only" {
+  default     = true
+  description = "A Boolean value indicating whether or not to make the role read-only.  If false then the role will allow write permissions."
+  type        = bool
+}
+
 variable "role_description" {
   type        = string
   description = "The description to associate with the IAM role (as well as the corresponding policy) that allows read-only access to the specified object(s) in the specified S3 buckets.  Note that the first \"%s\" in this value will get replaced with the s3_bucket variable and the second \"%s\" will get replaced with the entity_name variable.  If there are less than two instances of \"%s\" present in this value, no replacements will be made and the value will be used as is.  Including more than two instances of \"%s\" in this value will result in a Terraform error, so don't do that."
