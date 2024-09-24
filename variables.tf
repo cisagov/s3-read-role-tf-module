@@ -51,8 +51,8 @@ variable "read_only" {
 }
 
 variable "role_description" {
-  default     = "Allows access to S3 bucket %s required for %s."
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows access to the specified object(s) in the specified S3 buckets.  Note that the first \"%s\" in this value will get replaced with the s3_bucket variable and the second \"%s\" will get replaced with the entity_name variable.  If there are less than two instances of \"%s\" present in this value, no replacements will be made and the value will be used as is.  Including more than two instances of \"%s\" in this value will result in a Terraform error, so don't do that."
+  default     = "Allows %s access to S3 bucket %s required for %s."
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows access to the specified object(s) in the specified S3 buckets.  Note that the first \"%s\" in this value will get replaced with either \"read-only\" or \"read-write\" depending on the value of read_only, the second \"%s\" will get replaced with the s3_bucket variable, and the third \"%s\" will get replaced with the entity_name variable.  If there are less than three instances of \"%s\" present in this value, no replacements will be made and the value will be used as is.  Including more than three instances of \"%s\" in this value will result in a Terraform error, so don't do that."
   type        = string
 }
 

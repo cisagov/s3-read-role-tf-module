@@ -18,10 +18,12 @@ locals {
     local.object_actions_write,
   )
 
-  # If var.role_description contains two instances of "%s", use format()
-  # to replace the first "%s" with var.s3_bucket and the second "%s"
-  # with var.entity_name, otherwise just use var.role_description as is
-  role_description = length(regexall(".*%s.*%s.*", var.role_description)) > 0 ? format(var.role_description, var.s3_bucket, var.entity_name) : var.role_description
+  # If var.role_description contains three instances of "%s", use
+  # format() to replace the first "%s" with "read-only" or
+  # "read-write" depending on the value of var.read_only, the second
+  # "%s" with var.s3_bucket, and the third "%s" with var.entity_name;
+  # otherwise, just use var.role_description as is
+  role_description = length(regexall(".*%s.*%s.*%s.*", var.role_description)) > 0 ? format(var.role_description, var.read_only ? "read-only" : "read-write", var.s3_bucket, var.entity_name) : var.role_description
 
   # If var.role_name contains three instances of "%s", use format() to
   # replace the first "%s" with var.s3_bucket, the second "%s" with
