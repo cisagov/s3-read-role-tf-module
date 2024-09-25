@@ -1,10 +1,8 @@
-# IAM policy document that that allows for reading the specified objects
-# from the specified S3 bucket
-data "aws_iam_policy_document" "s3_read" {
+# IAM policy document that that allows for reading and possibly
+# writing the specified objects from the specified S3 bucket.
+data "aws_iam_policy_document" "s3_access" {
   statement {
-    actions = [
-      "s3:GetObject",
-    ]
+    actions = var.read_only ? local.object_actions_read : local.object_actions_read_write
 
     effect = "Allow"
 
@@ -36,8 +34,8 @@ data "aws_iam_policy_document" "s3_read" {
 }
 
 # The IAM policy for our role
-resource "aws_iam_policy" "s3_read" {
+resource "aws_iam_policy" "s3_access" {
   description = local.role_description
   name        = local.role_name
-  policy      = data.aws_iam_policy_document.s3_read.json
+  policy      = data.aws_iam_policy_document.s3_access.json
 }

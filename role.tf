@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "assume_role" {
 }
 
 # The IAM role
-resource "aws_iam_role" "s3_read" {
+resource "aws_iam_role" "s3_access" {
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
   description        = local.role_description
   name               = local.role_name
@@ -30,7 +30,7 @@ resource "aws_iam_role" "s3_read" {
 }
 
 # Attach the policy to the role
-resource "aws_iam_role_policy_attachment" "s3_read" {
-  policy_arn = aws_iam_policy.s3_read.arn
-  role       = aws_iam_role.s3_read.name
+resource "aws_iam_role_policy_attachment" "s3_access" {
+  policy_arn = aws_iam_policy.s3_access.arn
+  role       = aws_iam_role.s3_access.name
 }
