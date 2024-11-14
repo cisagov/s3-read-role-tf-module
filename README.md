@@ -76,7 +76,7 @@ This meta-role requires a permission policy similar to the following:
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 1.0 |
+| terraform | >= 1.1 |
 | aws | >= 4.9 |
 
 ## Providers ##
