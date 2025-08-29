@@ -9,7 +9,7 @@ from S3 buckets.
 
 ```hcl
 module "example" {
-  source = "github.com/cisagov/s3-read-role-tf-module"
+  source = "github.com/cisagov/s3-read-role-tf-module?ref=v1.0.0"
 
   providers = {
     aws = aws.provision-s3-read-roles
