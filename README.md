@@ -1,6 +1,8 @@
 # s3-read-role-tf-module #
 
 [![GitHub Build Status](https://github.com/cisagov/s3-read-role-tf-module/workflows/build/badge.svg)](https://github.com/cisagov/s3-read-role-tf-module/actions)
+[![License](https://img.shields.io/github/license/cisagov/s3-read-role-tf-module)](https://spdx.org/licenses/)
+[![CodeQL](https://github.com/cisagov/s3-read-role-tf-module/workflows/CodeQL/badge.svg)](https://github.com/cisagov/s3-read-role-tf-module/actions/workflows/codeql-analysis.yml)
 
 A Terraform module for creating an IAM role and policy for reading data
 from S3 buckets.
