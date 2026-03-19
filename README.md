@@ -77,14 +77,14 @@ This meta-role requires a permission policy similar to the following:
 ## Requirements ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | terraform | >= 1.1 |
 | aws | >= 4.9 |
 
 ## Providers ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | aws | >= 4.9 |
 
 ## Modules ##
@@ -94,7 +94,7 @@ No modules.
 ## Resources ##
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_iam_policy.s3_access](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role.s3_access](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.s3_access](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
@@ -104,7 +104,7 @@ No modules.
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | account\_ids | AWS account IDs that are allowed to assume the role. | `list(string)` | `[]` | no |
 | additional\_role\_tags | Tags to apply to the IAM role that allows access to the specified S3 buckets, in addition to the provider's default tags. | `map(string)` | `{}` | no |
 | aws\_region | The AWS region where the non-global resources are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
@@ -119,7 +119,7 @@ No modules.
 ## Outputs ##
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | policy | The IAM policy that can access the specified objects from the specified S3 bucket. |
 | read\_only | A Boolean value indicating whether or not the role and policy are read-only.  If false then the role and policy will allow write permissions. |
 | role | The IAM role that can access the specified objects from the specified S3 bucket. |

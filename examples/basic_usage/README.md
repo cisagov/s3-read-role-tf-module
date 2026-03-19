@@ -12,7 +12,7 @@ Note that this example may create resources which cost money. Run
 ## Requirements ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | terraform | ~> 1.1 |
 | aws | ~> 6.7 |
 
@@ -23,7 +23,7 @@ No providers.
 ## Modules ##
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | s3\_read\_role | ../../ | n/a |
 
 ## Resources ##
@@ -37,7 +37,7 @@ No inputs.
 ## Outputs ##
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | policy | The IAM policy for example-user that can read any object from example-bucket. |
 | role | The IAM role for example-user that can read any object from example-bucket. |
 <!-- END_TF_DOCS -->
